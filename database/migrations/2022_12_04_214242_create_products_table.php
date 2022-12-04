@@ -15,6 +15,10 @@ return new class extends Migration
     {
         Schema::create('products', function (Blueprint $table) {
             $table->id();
+            $table->string('title' , 255);
+            $table->text('description');
+            $table->string('sku' , 20);
+            $table->decimal('price',9,3);
             $table->timestamps();
         });
     }
