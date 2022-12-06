@@ -52,4 +52,14 @@ class Product extends Model
     {
         return $this->belongsToMany(Attribute::class);
     }
+
+    /**
+     * The metaAttributes that belong to the Product
+     *
+     * @return \Illuminate\Database\Eloquent\Relations\BelongsToMany
+     */
+    public function metaAttributes(): BelongsToMany
+    {
+        return $this->belongsToMany(MetaAttribute::class);
+    }
 }

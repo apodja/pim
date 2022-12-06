@@ -3,6 +3,8 @@
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ProductController;
+use App\Models\Attribute;
+use App\Models\Product;
 
 /*
 |--------------------------------------------------------------------------
@@ -19,9 +21,11 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
 });
 
-
-// Route::middleware('auth:sanctum')->group(function () {
-//     Route::apiResource('/products' , ProductController::class);
-// });
-
 Route::apiResource('/products' , ProductController::class);
+
+Route::get('/test' , function(){
+    $a = Product::where('id' , 2)->with('metaAttributes' , 'attributes')->get();
+    
+
+    return $a;
+});

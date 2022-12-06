@@ -15,6 +15,17 @@ class AttributeSeeder extends Seeder
      */
     public function run()
     {
-        Attribute::factory()->times(10)->create();
+        // Attribute::factory()->times(10)->create();
+        Attribute::insert([
+                [
+                    'type' => 'Color',
+                    'created_at' => now()
+                ],   
+
+                [
+                    'type' => 'Size',
+                    'created_at' => now()
+                ]
+            ]);
     }
 }

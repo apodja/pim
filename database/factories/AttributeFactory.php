@@ -17,7 +17,17 @@ class AttributeFactory extends Factory
     public function definition()
     {
         return [
-            'type' => 'Color',        
+            [
+                'type' => 'Color'
+            ],   
+
+            [
+                'type' => 'Size'
+            ],    
+            
+            [
+                'type' => 'Volume'
+            ]       
         ];
     }
 }

@@ -2,6 +2,7 @@
 
 namespace Database\Factories;
 
+use App\Models\Attribute;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
 /**
@@ -17,7 +18,8 @@ class MetaAttributeFactory extends Factory
     public function definition()
     {
         return [
-            //
+            'value' => $this->faker->colorName(),
+            'attribute_id' => Attribute::find(2)->id,
         ];
     }
 }
