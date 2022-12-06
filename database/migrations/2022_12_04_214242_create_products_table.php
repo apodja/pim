@@ -19,9 +19,11 @@ return new class extends Migration
             $table->text('description');
             $table->string('sku' , 20);
             $table->decimal('price',9,3);
-            $table->boolean('active');
+            $table->boolean('active')->default(true);
             $table->unsignedBigInteger('category_id');
             $table->unsignedBigInteger('manufacturer_id');
+            $table->boolean('hasVariants')->default(false);
+            $table->unsignedBigInteger('attribute_id')->nullable();
             $table->timestamps();
         });
     }

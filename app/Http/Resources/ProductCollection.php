@@ -6,6 +6,14 @@ use Illuminate\Http\Resources\Json\ResourceCollection;
 
 class ProductCollection extends ResourceCollection
 {
+
+    /**
+     * The "data" wrapper that should be applied.
+     *
+     * @var string|null
+     */
+    public static $wrap = null; 
+
     /**
      * Transform the resource collection into an array.
      *
@@ -14,6 +22,9 @@ class ProductCollection extends ResourceCollection
      */
     public function toArray($request)
     {
-        return parent::toArray($request);
+        return [
+            'products' => $this->collection,
+            'total' => (string) $this->collection->count()
+        ];
     }
 }

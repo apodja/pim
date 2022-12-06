@@ -17,7 +17,10 @@ class Product extends Model
         'sku',
         'price',
         'active',
-        
+        'category_id',
+        'manufacturer_id',
+        'hasVariants',
+        'attribute_id'
     ];
 
     /**
