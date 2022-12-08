@@ -20,8 +20,8 @@ class DatabaseSeeder extends Seeder
             CategorySeeder::class,
             ManufacturerSeeder::class,
             AttributeSeeder::class,
-            MetaAttributeSeeder::class,
             ProductSeeder::class,
+            MetaAttributeSeeder::class,
             ProductAttributeSeeder::class,
             MetaAttributeProductSeeder::class
         ]);

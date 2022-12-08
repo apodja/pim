@@ -7,9 +7,17 @@ use App\Http\Requests\StoreProductRequest;
 use App\Http\Requests\UpdateProductRequest;
 use App\Http\Resources\ProductResource;
 use App\Http\Resources\ProductCollection;
+use App\Traits\FileUploadTrait;
+use Illuminate\Http\Request;
 
 class ProductController extends Controller
 {
+    /**
+     * Import Trait inside so it can be used inside the class.
+     *
+     */
+    use FileUploadTrait;
+
     /**
      * Display a listing of the resource.
      *
@@ -27,9 +35,11 @@ class ProductController extends Controller
      * @param  \App\Http\Requests\StoreProductRequest  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(StoreProductRequest $request)
+    public function store(Request $request)
     {
-        //
+        $save = $this->uploadFile($request, 'image', 'images/products');
+
+        return response()->json(['file' => $save]);
     }
 
     /**

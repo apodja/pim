@@ -6,6 +6,8 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\BelongsToMany;
+use Illuminate\Database\Eloquent\Relations\HasMany;
+use Illuminate\Database\Eloquent\Relations\HasManyThrough;
 
 class Product extends Model
 {
@@ -62,4 +64,25 @@ class Product extends Model
     {
         return $this->belongsToMany(MetaAttribute::class);
     }
+
+    /**
+     * Get all of the meta attributes for the Product
+     *
+     * @return \Illuminate\Database\Eloquent\Relations\HasManyThrough
+     */
+    public function metas(): HasManyThrough
+    {
+        return $this->hasManyThrough(MetaAttribute::class, ProductAttribute::class , 'attribute_id' , 'product_id', 'id' , 'id');
+    }
+
+    /**
+     * Get all of the variants for the Product
+     *
+     * @return \Illuminate\Database\Eloquent\Relations\HasMany
+     */
+    public function combinations(): HasMany
+    {
+        return $this->hasMany(Combination::class);
+    }
+
 }

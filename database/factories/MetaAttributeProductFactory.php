@@ -19,7 +19,7 @@ class MetaAttributeProductFactory extends Factory
     public function definition()
     {
         return [
-            'product_id' => Product::inRandomOrder()->first()->id,
+            'product_id' => Product::first()->id,
             'meta_attribute_id' => MetaAttribute::inRandomOrder()->first()->id,
         ];
     }

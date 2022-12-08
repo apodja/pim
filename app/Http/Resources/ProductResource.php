@@ -3,6 +3,9 @@
 namespace App\Http\Resources;
 
 use Illuminate\Http\Resources\Json\JsonResource;
+use App\Http\Resources\VariantResource;
+use App\Models\Product;
+use Attribute;
 
 class ProductResource extends JsonResource
 {
@@ -21,7 +24,7 @@ class ProductResource extends JsonResource
      * @return array|\Illuminate\Contracts\Support\Arrayable|\JsonSerializable
      */
     public function toArray($request)
-    {
+    {   
         return [
             'id' => (string) $this->id,
             'title' => $this->title,
@@ -30,7 +33,7 @@ class ProductResource extends JsonResource
             'price' => (string) $this->price,
             'category' => $this->category->title,
             'manufacturer' => $this->manufacturer->name,
-            // 'images' => 
+            'variants' =>  new CombinationCollection($this->combinations)
         ];
     }
 }

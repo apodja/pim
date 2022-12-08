@@ -13,11 +13,11 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('meta_attributes', function (Blueprint $table) {
+        Schema::create('combinations', function (Blueprint $table) {
             $table->id();
-            $table->string('value' , 32);
-            $table->integer('attribute_id')->unsigned();
             $table->integer('product_id')->unsigned();
+            $table->integer('combination_id')->unsigned();
+            $table->integer('attribute_id')->unsigned();
             $table->timestamps();
         });
     }
@@ -29,6 +29,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('meta_attributes');
+        Schema::dropIfExists('combinations');
     }
 };
