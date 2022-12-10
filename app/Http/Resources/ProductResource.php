@@ -33,7 +33,8 @@ class ProductResource extends JsonResource
             'price' => (string) $this->price,
             'category' => $this->category->title,
             'manufacturer' => $this->manufacturer->name,
-            'variants' =>  new CombinationCollection($this->combinations)
+            'variants' =>  $this->when($this->hasVariants == true , new CombinationCollection($this->combinations)),
+            'images' => $this->when($this->images->count()>0 , new ImageCollection($this->images))
         ];
     }
 }

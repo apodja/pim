@@ -6,6 +6,7 @@ use App\Http\Controllers\ProductController;
 use App\Models\Attribute;
 use App\Models\Combination;
 use App\Models\MetaAttribute;
+use App\Models\Product;
 
 /*
 |--------------------------------------------------------------------------
@@ -24,3 +25,7 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 
 Route::apiResource('/products' , ProductController::class);
 
+Route::get('test/' , function(){
+    $p='gfhffhf';
+    return explode(',' , $p);
+});

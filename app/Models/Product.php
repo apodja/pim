@@ -85,4 +85,14 @@ class Product extends Model
         return $this->hasMany(Combination::class);
     }
 
+    /**
+     * Get all of the images for the Product
+     *
+     * @return \Illuminate\Database\Eloquent\Relations\HasMany
+     */
+    public function images(): HasMany
+    {
+        return $this->hasMany(Image::class);
+    }
+
 }

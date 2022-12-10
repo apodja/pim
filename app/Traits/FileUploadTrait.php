@@ -3,25 +3,30 @@
 namespace App\Traits;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Http;
+use Image;
 
 trait FileUploadTrait {
 
     /**
-     * @param Request $request
-     * @return $this|false|string
+     * @param string $url_string
+     * @return array
      */
-    public function uploadFile(Request $request, $fieldname = 'image', $directory = 'images' ) {
+    public function uploadFile( $url_string, $fieldname = 'images', $directory = null ) 
+    {
+        $folder_path = storage_path('app/public/images/');
+        $saved_images = array();
 
-        if( $request->hasFile($fieldname) ) {
+        $urls = explode(',' , $url_string);
 
-            if (!$request->file($fieldname)->isValid()) {
-
-                return redirect()->back()->withInput();
-            }
-
-            return $request->file($fieldname)->store($directory, 'public');
+        foreach ($urls as $url) 
+        {
+            $filename = basename($url);
+            $full_path = $folder_path.$directory.$filename;
+            $image = Image::make($url)->save($full_path);
+            $saved_images[] = $full_path;
         }
 
-        return null;
+        return $saved_images;
     }
 }

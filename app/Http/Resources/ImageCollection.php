@@ -4,8 +4,16 @@ namespace App\Http\Resources;
 
 use Illuminate\Http\Resources\Json\ResourceCollection;
 
-class CombinationCollection extends ResourceCollection
+class ImageCollection extends ResourceCollection
 {
+    /**
+     * The "data" wrapper that should be applied.
+     *
+     * @var string|null
+     */
+    public static $wrap = null; 
+
+
     /**
      * Transform the resource collection into an array.
      *

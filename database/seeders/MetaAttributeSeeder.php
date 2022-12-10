@@ -16,52 +16,52 @@ class MetaAttributeSeeder extends Seeder
      */
     public function run()
     {
-        MetaAttribute::insert([
-            [
-                'value' => 'Green',
-                'attribute_id' => 1,
-                'product_id' => Product::first()->id
-            ],
-            [
-                'value' => 'Red',
-                'attribute_id' => 1,
-                'product_id' => Product::first()->id
-            ],
-            [
-                'value' => 'Purple',
-                'attribute_id' => 1,
-                'product_id' => Product::first()->id
-            ],
-            [
-                'value' => 'Orange',
-                'attribute_id' => 1,
-                'product_id' => Product::first()->id
-            ],
-            [
-                'value' => 'S',
-                'attribute_id' => 2,
-                'product_id' => Product::first()->id
-            ],
-            [
-                'value' => 'S',
-                'attribute_id' => 2,
-                'product_id' => Product::first()->id
-            ],
-            [
-                'value' => 'M',
-                'attribute_id' => 2,
-                'product_id' => Product::first()->id
-            ],
-            [
-                'value' => 'L',
-                'attribute_id' => 2,
-                'product_id' => Product::first()->id
-            ],
-            [
-                'value' => 'XL',
-                'attribute_id' => 2,
-                'product_id' => Product::first()->id
-            ]
-        ]);
+        // MetaAttribute::insert([
+        //     [
+        //         'value' => 'Green',
+        //         'attribute_id' => 1,
+        //         'product_id' => Product::first()->id
+        //     ],
+        //     [
+        //         'value' => 'Red',
+        //         'attribute_id' => 1,
+        //         'product_id' => Product::first()->id
+        //     ],
+        //     [
+        //         'value' => 'Purple',
+        //         'attribute_id' => 1,
+        //         'product_id' => Product::first()->id
+        //     ],
+        //     [
+        //         'value' => 'Orange',
+        //         'attribute_id' => 1,
+        //         'product_id' => Product::first()->id
+        //     ],
+        //     [
+        //         'value' => 'S',
+        //         'attribute_id' => 2,
+        //         'product_id' => Product::first()->id
+        //     ],
+        //     [
+        //         'value' => 'S',
+        //         'attribute_id' => 2,
+        //         'product_id' => Product::first()->id
+        //     ],
+        //     [
+        //         'value' => 'M',
+        //         'attribute_id' => 2,
+        //         'product_id' => Product::first()->id
+        //     ],
+        //     [
+        //         'value' => 'L',
+        //         'attribute_id' => 2,
+        //         'product_id' => Product::first()->id
+        //     ],
+        //     [
+        //         'value' => 'XL',
+        //         'attribute_id' => 2,
+        //         'product_id' => Product::first()->id
+        //     ]
+        // ]);
     }
 }

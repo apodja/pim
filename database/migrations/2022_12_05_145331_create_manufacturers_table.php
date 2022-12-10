@@ -16,7 +16,7 @@ return new class extends Migration
         Schema::create('manufacturers', function (Blueprint $table) {
             $table->id();
             $table->string('name' , 64);
-            $table->text('logo_url');
+            $table->text('logo_url')->nullable();
             $table->timestamps();
         });
     }

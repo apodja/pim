@@ -17,7 +17,7 @@ return new class extends Migration
             $table->id();
             $table->string('value' , 32);
             $table->integer('attribute_id')->unsigned();
-            $table->integer('product_id')->unsigned();
+            // $table->integer('product_id')->unsigned();
             $table->timestamps();
         });
     }

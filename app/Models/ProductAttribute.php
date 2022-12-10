@@ -11,7 +11,7 @@ class ProductAttribute extends Model
 
     protected $table = 'attribute_product';
 
-    protected $filable = [
+    protected $fillable = [
         'product_id',
         'attribute_id'
     ];

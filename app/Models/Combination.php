@@ -6,6 +6,7 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\BelongsToMany;
+use Illuminate\Database\Eloquent\Relations\HasMany;
 
 class Combination extends Model
 {
@@ -13,8 +14,10 @@ class Combination extends Model
 
     protected $fillable = [
         'product_id',
-        'combination_id',
-        'attribute_id'
+        'mainAttr',
+        'attr',
+        'price',
+        'quantity'
     ];
 
     /**
@@ -44,7 +47,7 @@ class Combination extends Model
      */
     public function metaMain(): BelongsTo
     {
-        return $this->belongsTo(MetaAttribute::class, 'combination_id');
+        return $this->belongsTo(MetaAttribute::class, 'mainAttr');
     }
 
 
@@ -55,6 +58,16 @@ class Combination extends Model
      */
     public function meta(): BelongsTo
     {
-        return $this->belongsTo(MetaAttribute::class, 'attribute_id');
+        return $this->belongsTo(MetaAttribute::class, 'attr');
+    }
+
+    /**
+     * Get all of the images for the Combination
+     *
+     * @return \Illuminate\Database\Eloquent\Relations\HasMany
+     */
+    public function images(): HasMany
+    {
+        return $this->hasMany(Image::class);
     }
 }

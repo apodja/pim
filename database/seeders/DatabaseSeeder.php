@@ -17,13 +17,14 @@ class DatabaseSeeder extends Seeder
     public function run()
     {
         $this->call([
-            CategorySeeder::class,
-            ManufacturerSeeder::class,
-            AttributeSeeder::class,
-            ProductSeeder::class,
-            MetaAttributeSeeder::class,
-            ProductAttributeSeeder::class,
-            MetaAttributeProductSeeder::class
+            // CategorySeeder::class,
+            // ManufacturerSeeder::class,
+            // AttributeSeeder::class,
+            // ProductSeeder::class,
+            // MetaAttributeSeeder::class,
+            // ProductAttributeSeeder::class,
+            // MetaAttributeProductSeeder::class,
+            // ImageSeeder::class
         ]);
     }
 }

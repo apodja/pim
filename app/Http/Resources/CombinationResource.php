@@ -3,7 +3,6 @@
 namespace App\Http\Resources;
 
 use App\Models\MetaAttribute;
-use Attribute;
 use Illuminate\Http\Resources\Json\JsonResource;
 
 class CombinationResource extends JsonResource
@@ -16,10 +15,27 @@ class CombinationResource extends JsonResource
      */
     public function toArray($request)
     {
-        return [
+        $data = array(
             $this->attrType($this->metaMain->id) => $this->metaMain->value,
-            $this->attrType($this->meta->id) => $this->meta->value
-        ];
+            'price' => $this->price,
+            'quantity' => $this->quantity,
+            'images' => new ImageCollection($this->images)
+        );
+
+        // merge only if relation exists
+        if ($this->meta != null) 
+        {
+            $key = $this->attrType($this->meta->id);
+            $data = array(
+                $this->attrType($this->metaMain->id) => $this->metaMain->value,
+                $key => $this->meta->value,
+                'price' => $this->price,
+                'quantity' => $this->quantity,
+                'images' => new ImageCollection($this->images)
+            );
+        }
+        
+        return $data;
     }
 
     protected function attrType(int $id): string

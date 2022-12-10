@@ -2,11 +2,11 @@
 
 namespace Database\Seeders;
 
-use App\Models\MetaAttributeProduct;
+use App\Models\Image;
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
 
-class MetaAttributeProductSeeder extends Seeder
+class ImageSeeder extends Seeder
 {
     /**
      * Run the database seeds.
@@ -15,6 +15,6 @@ class MetaAttributeProductSeeder extends Seeder
      */
     public function run()
     {
-        // MetaAttributeProduct::factory()->times(10)->create();
+        Image::factory()->times(10)->create();
     }
 }
