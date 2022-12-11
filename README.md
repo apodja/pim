@@ -1,66 +1,61 @@
-<p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400" alt="Laravel Logo"></a></p>
+## About the project
 
-<p align="center">
-<a href="https://travis-ci.org/laravel/framework"><img src="https://travis-ci.org/laravel/framework.svg" alt="Build Status"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/dt/laravel/framework" alt="Total Downloads"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/v/laravel/framework" alt="Latest Stable Version"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/l/laravel/framework" alt="License"></a>
-</p>
+This is a simple Product Inventory Management app in Laravel framework . 
+It takes advantages of laravel api resources and collections to store and show product data in a 
+nice looking format .
 
-## About Laravel
+Overview of the routes : 
 
-Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling. Laravel takes the pain out of development by easing common tasks used in many web projects, such as:
 
-- [Simple, fast routing engine](https://laravel.com/docs/routing).
-- [Powerful dependency injection container](https://laravel.com/docs/container).
-- Multiple back-ends for [session](https://laravel.com/docs/session) and [cache](https://laravel.com/docs/cache) storage.
-- Expressive, intuitive [database ORM](https://laravel.com/docs/eloquent).
-- Database agnostic [schema migrations](https://laravel.com/docs/migrations).
-- [Robust background job processing](https://laravel.com/docs/queues).
-- [Real-time event broadcasting](https://laravel.com/docs/broadcasting).
+  GET|HEAD  api/products .................................... products.index › ProductController@index 
 
-Laravel is accessible, powerful, and provides tools required for large, robust applications.
+  POST      api/products .................................... products.store › ProductController@store  
 
-## Learning Laravel
+  GET|HEAD  api/products/{product} ............................ products.show › ProductController@show  
 
-Laravel has the most extensive and thorough [documentation](https://laravel.com/docs) and video tutorial library of all modern web application frameworks, making it a breeze to get started with the framework.
+  PUT|PATCH   api/products/{product} ..... products.update › ProductController@update  (not implemented)
 
-You may also try the [Laravel Bootcamp](https://bootcamp.laravel.com), where you will be guided through building a modern Laravel application from scratch.
+  DELETE  api/products/{product} ...................... products.destroy › ProductController@destroy
 
-If you don't feel like reading, [Laracasts](https://laracasts.com) can help. Laracasts contains over 2000 video tutorials on a range of topics including Laravel, modern PHP, unit testing, and JavaScript. Boost your skills by digging into our comprehensive video library.
+## Run the project 
 
-## Laravel Sponsors
+Install dependencies 
 
-We would like to extend our thanks to the following sponsors for funding Laravel development. If you are interested in becoming a sponsor, please visit the Laravel [Patreon page](https://patreon.com/taylorotwell).
+> composer install 
 
-### Premium Partners
+Make a copy of .env.example file and rename it to .env
 
-- **[Vehikl](https://vehikl.com/)**
-- **[Tighten Co.](https://tighten.co)**
-- **[Kirschbaum Development Group](https://kirschbaumdevelopment.com)**
-- **[64 Robots](https://64robots.com)**
-- **[Cubet Techno Labs](https://cubettech.com)**
-- **[Cyber-Duck](https://cyber-duck.co.uk)**
-- **[Many](https://www.many.co.uk)**
-- **[Webdock, Fast VPS Hosting](https://www.webdock.io/en)**
-- **[DevSquad](https://devsquad.com)**
-- **[Curotec](https://www.curotec.com/services/technologies/laravel/)**
-- **[OP.GG](https://op.gg)**
-- **[WebReinvent](https://webreinvent.com/?utm_source=laravel&utm_medium=github&utm_campaign=patreon-sponsors)**
-- **[Lendio](https://lendio.com)**
+> cp .env.example .env 
 
-## Contributing
+Create a database and insert the credentials in the .env file 
 
-Thank you for considering contributing to the Laravel framework! The contribution guide can be found in the [Laravel documentation](https://laravel.com/docs/contributions).
+Run the migrations 
 
-## Code of Conduct
+> php artisan migrate
 
-In order to ensure that the Laravel community is welcoming to all, please review and abide by the [Code of Conduct](https://laravel.com/docs/contributions#code-of-conduct).
+Run the development server 
 
-## Security Vulnerabilities
+> php artisan serve
 
-If you discover a security vulnerability within Laravel, please send an e-mail to Taylor Otwell via [taylor@laravel.com](mailto:taylor@laravel.com). All security vulnerabilities will be promptly addressed.
 
-## License
+## About product data management 
 
-The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
+The system supports product attributes as well , that means that alongside standalone products ,
+it supports variants and combinations as well .
+Variants are products that belong to a group but have different attributes .
+Example : 
+
+A T-Shirt as product 
+
+- Variants of this product would be all the colors that product comes in e.g Black , White , Green etc 
+- Combinations of this product would be Size XXL of black variant , size M of the white variant etc
+
+I have provided some mock data to test how the product data will look like , you can find it in the project root , file products.json. This file contains data for a standalone product , for a product 
+with variants and for a product with combinations .
+
+To insert the data just copy the data as it is , put it in the body of the request 
+and make a POST request to the endpoint /api/products . Do not forget to set the header: 
+application/json if you are in postman 
+
+To see all the data you can make a get request to the same route , and if you want to see a specific product make a get request to the endpoint /api/products/{id} e.g  /api/products/1
+
